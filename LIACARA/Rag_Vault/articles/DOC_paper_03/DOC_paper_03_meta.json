@@ -1,0 +1,561 @@
+{
+  "table_of_contents": [
+    {
+      "title": "Cave Art Research",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          65.078125,
+          88.14227294921875
+        ],
+        [
+          530.1455688476562,
+          88.14227294921875
+        ],
+        [
+          530.1455688476562,
+          120.14227294921875
+        ],
+        [
+          63.916015625,
+          120.14227294921875
+        ]
+      ]
+    },
+    {
+      "title": "International Newsletter of the Cave Art Research Association (CARA)",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          74.9560546875,
+          128.6845703125
+        ],
+        [
+          519.53564453125,
+          127.0400390625
+        ],
+        [
+          519.53564453125,
+          143.999755859375
+        ],
+        [
+          73.7939453125,
+          143.999755859375
+        ]
+      ]
+    },
+    {
+      "title": "The cave petroglyphs of Australia",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          171.4111328125,
+          215.4022216796875
+        ],
+        [
+          423.2447509765625,
+          215.0224609375
+        ],
+        [
+          423.2447509765625,
+          233.4022216796875
+        ],
+        [
+          171.4111328125,
+          233.9345703125
+        ]
+      ]
+    },
+    {
+      "title": "Site type profile",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          55.49072265625,
+          704.2705078125
+        ],
+        [
+          121.92800903320312,
+          704.2705078125
+        ],
+        [
+          121.92800903320312,
+          714.4813385009766
+        ],
+        [
+          55.49072265625,
+          714.4813385009766
+        ]
+      ]
+    },
+    {
+      "title": "Description of the art",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          55.78125,
+          303.8271484375
+        ],
+        [
+          144.35597229003906,
+          302.1826171875
+        ],
+        [
+          144.35597229003906,
+          314.16119384765625
+        ],
+        [
+          54.619140625,
+          314.5166015625
+        ]
+      ]
+    },
+    {
+      "title": "Dating and archaeology",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          303.310546875,
+          620.7214508056641
+        ],
+        [
+          402.843994140625,
+          619.166015625
+        ],
+        [
+          402.843994140625,
+          630.7214508056641
+        ],
+        [
+          303.310546875,
+          630.7214508056641
+        ]
+      ]
+    },
+    {
+      "title": "About the sites and their protection",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          305.0537109375,
+          674.7213592529297
+        ],
+        [
+          450.81005859375,
+          674.6689453125
+        ],
+        [
+          450.81005859375,
+          684.7213592529297
+        ],
+        [
+          305.0537109375,
+          685.3583984375
+        ]
+      ]
+    },
+    {
+      "title": "Conclusions",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          56.65283203125,
+          451.8349609375
+        ],
+        [
+          108.46000671386719,
+          451.8349609375
+        ],
+        [
+          108.46000671386719,
+          463.32122802734375
+        ],
+        [
+          55.49072265625,
+          463.32122802734375
+        ]
+      ]
+    },
+    {
+      "title": "REFERENCES",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          56.3623046875,
+          502.8154296875
+        ],
+        [
+          115.07339477539062,
+          502.8154296875
+        ],
+        [
+          115.07339477539062,
+          513.1661071777344
+        ],
+        [
+          55.2001953125,
+          513.1661071777344
+        ]
+      ]
+    },
+    {
+      "title": "Pleasevisitthehome-pageoftheCaveArtResearchAssociationat\nhttp://mc2.vicnet.net.au/home/cara13/web/index.html",
+      "heading_level": null,
+      "page_id": 7,
+      "polygon": [
+        [
+          81.63818359375,
+          492.1259765625
+        ],
+        [
+          510.3098449707031,
+          490.4814453125
+        ],
+        [
+          510.3098449707031,
+          531.6132202148438
+        ],
+        [
+          80.47607421875,
+          531.6132202148438
+        ]
+      ]
+    }
+  ],
+  "page_stats": [
+    {
+      "page_id": 0,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          152
+        ],
+        [
+          "Line",
+          81
+        ],
+        [
+          "Text",
+          8
+        ],
+        [
+          "SectionHeader",
+          4
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 1,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          4
+        ],
+        [
+          "PageHeader",
+          2
+        ],
+        [
+          "Line",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 2,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          176
+        ],
+        [
+          "Line",
+          81
+        ],
+        [
+          "ListItem",
+          7
+        ],
+        [
+          "PageHeader",
+          2
+        ],
+        [
+          "Caption",
+          2
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Text",
+          2
+        ],
+        [
+          "ListGroup",
+          2
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "PictureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 3,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          101
+        ],
+        [
+          "Line",
+          54
+        ],
+        [
+          "Text",
+          3
+        ],
+        [
+          "PageHeader",
+          2
+        ],
+        [
+          "Caption",
+          2
+        ],
+        [
+          "SectionHeader",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 4,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          99
+        ],
+        [
+          "Line",
+          51
+        ],
+        [
+          "Text",
+          4
+        ],
+        [
+          "PageHeader",
+          2
+        ],
+        [
+          "Caption",
+          2
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "PictureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 5,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          138
+        ],
+        [
+          "Line",
+          78
+        ],
+        [
+          "Text",
+          9
+        ],
+        [
+          "PageHeader",
+          2
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "PictureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 6,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          170
+        ],
+        [
+          "Line",
+          64
+        ],
+        [
+          "ListItem",
+          24
+        ],
+        [
+          "PageHeader",
+          2
+        ],
+        [
+          "ListGroup",
+          2
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "Text",
+          1
+        ],
+        [
+          "SectionHeader",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 7,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          208
+        ],
+        [
+          "Line",
+          83
+        ],
+        [
+          "ListItem",
+          24
+        ],
+        [
+          "Text",
+          4
+        ],
+        [
+          "PageHeader",
+          2
+        ],
+        [
+          "ListGroup",
+          2
+        ],
+        [
+          "SectionHeader",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    }
+  ],
+  "debug_data_path": "debug_data\\DOC_paper_03"
+}

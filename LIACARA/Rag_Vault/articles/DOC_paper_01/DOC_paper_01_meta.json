@@ -1,0 +1,569 @@
+{
+  "table_of_contents": [
+    {
+      "title": "Cave Art Research",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          167.5399932861328,
+          75.99169921875
+        ],
+        [
+          427.8008728027344,
+          75.32666015625
+        ],
+        [
+          427.8008728027344,
+          108.03167724609375
+        ],
+        [
+          167.333984375,
+          108.03167724609375
+        ]
+      ]
+    },
+    {
+      "title": "International Newsletter of the Cave Art Research Association (CARA)",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          68.388671875,
+          114.84228515625
+        ],
+        [
+          525.9239501953125,
+          113.19580078125
+        ],
+        [
+          525.9239501953125,
+          129.90679931640625
+        ],
+        [
+          67.224609375,
+          129.90679931640625
+        ]
+      ]
+    },
+    {
+      "title": "Dating Australian cave petroglyphs",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          160.640625,
+          200.0921630859375
+        ],
+        [
+          434.01800537109375,
+          199.63623046875
+        ],
+        [
+          434.01800537109375,
+          218.0921630859375
+        ],
+        [
+          160.640625,
+          218.57080078125
+        ]
+      ]
+    },
+    {
+      "title": "Introduction",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          56.166015625,
+          352.34765625
+        ],
+        [
+          111.09180450439453,
+          352.34765625
+        ],
+        [
+          111.09180450439453,
+          363.9134216308594
+        ],
+        [
+          55.001953125,
+          363.9134216308594
+        ]
+      ]
+    },
+    {
+      "title": "Carbonate speleothems",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          307.3125,
+          352.34765625
+        ],
+        [
+          407.421875,
+          352.34765625
+        ],
+        [
+          407.421875,
+          363.9134216308594
+        ],
+        [
+          307.3125,
+          363.9134216308594
+        ]
+      ]
+    },
+    {
+      "title": "Speleothems in the Mt Gambier rock art sites",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          55.583984375,
+          214.04296875
+        ],
+        [
+          250.05369567871094,
+          212.396484375
+        ],
+        [
+          250.05369567871094,
+          224.44342041015625
+        ],
+        [
+          55.583984375,
+          224.44342041015625
+        ]
+      ]
+    },
+    {
+      "title": "Conclusion",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          56.76000213623047,
+          753.67822265625
+        ],
+        [
+          104.39867401123047,
+          752.03173828125
+        ],
+        [
+          104.39867401123047,
+          763.7994155883789
+        ],
+        [
+          55.875,
+          763.7994155883789
+        ]
+      ]
+    },
+    {
+      "title": "Acknowledgments",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          56.166015625,
+          298.42529296875
+        ],
+        [
+          128.97996520996094,
+          296.77880859375
+        ],
+        [
+          128.97996520996094,
+          308.473388671875
+        ],
+        [
+          55.001953125,
+          308.473388671875
+        ]
+      ]
+    },
+    {
+      "title": "REFERENCES",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          56.748046875,
+          362.63818359375
+        ],
+        [
+          117.22200012207031,
+          360.99169921875
+        ],
+        [
+          117.22200012207031,
+          372.1260986328125
+        ],
+        [
+          55.583984375,
+          372.1260986328125
+        ]
+      ]
+    },
+    {
+      "title": "Please visit Glenn Woodley's cave art sites on the Internet, at \nhttp://artshack.tripod.com/caveart.html",
+      "heading_level": null,
+      "page_id": 7,
+      "polygon": [
+        [
+          79.73828125,
+          453.1959533691406
+        ],
+        [
+          519.2921142578125,
+          451.9599609375
+        ],
+        [
+          519.2921142578125,
+          487.51593017578125
+        ],
+        [
+          79.73828125,
+          488.1826171875
+        ]
+      ]
+    }
+  ],
+  "page_stats": [
+    {
+      "page_id": 0,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          159
+        ],
+        [
+          "Line",
+          79
+        ],
+        [
+          "Text",
+          8
+        ],
+        [
+          "SectionHeader",
+          5
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 1,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          113
+        ],
+        [
+          "Span",
+          89
+        ],
+        [
+          "Text",
+          6
+        ],
+        [
+          "PageHeader",
+          2
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 2,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          213
+        ],
+        [
+          "Line",
+          101
+        ],
+        [
+          "Text",
+          7
+        ],
+        [
+          "PageHeader",
+          2
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "PictureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 3,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          161
+        ],
+        [
+          "Line",
+          72
+        ],
+        [
+          "Text",
+          5
+        ],
+        [
+          "PageHeader",
+          2
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 4,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          170
+        ],
+        [
+          "Line",
+          78
+        ],
+        [
+          "Text",
+          5
+        ],
+        [
+          "PageHeader",
+          2
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "PictureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 5,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          122
+        ],
+        [
+          "Line",
+          55
+        ],
+        [
+          "Text",
+          4
+        ],
+        [
+          "PageHeader",
+          2
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "PictureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 6,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          344
+        ],
+        [
+          "Line",
+          128
+        ],
+        [
+          "ListItem",
+          40
+        ],
+        [
+          "Text",
+          4
+        ],
+        [
+          "ListGroup",
+          3
+        ],
+        [
+          "PageHeader",
+          2
+        ],
+        [
+          "SectionHeader",
+          2
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 7,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          187
+        ],
+        [
+          "Line",
+          68
+        ],
+        [
+          "ListItem",
+          20
+        ],
+        [
+          "Text",
+          5
+        ],
+        [
+          "PageHeader",
+          2
+        ],
+        [
+          "ListGroup",
+          2
+        ],
+        [
+          "SectionHeader",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    }
+  ],
+  "debug_data_path": "debug_data\\DOC_paper_01"
+}

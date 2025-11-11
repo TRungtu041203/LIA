@@ -1,0 +1,18 @@
+# Ignore common image file formats
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.tiff
+*.tif
+*.svg
+*.webp
+*.ico
+*.psd
+*.heic
+*.raw
+
+# Optional: Ignore image folders if you have dedicated ones
+images/
+assets/images/

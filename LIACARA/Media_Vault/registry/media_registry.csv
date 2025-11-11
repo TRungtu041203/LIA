@@ -1,0 +1,41 @@
+media_id,media_type,parent_ids,site_ids,concept_ids,path,license,source_ref,checksum_sha256,width,height,sensitivity
+IMG_01,image,DOC_001,SITE_ALTAMIRA,"CONC_MATERIAL_HEMATITE|CONC_MOTIF_BISON",/Media_Vault/images/IMG_01.jpg,CC BY-NC 4.0,"Altamira Report 2023, Fig. 1A",a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4,1920,1080,Open
+IMG_02,image,DOC_001,SITE_ALTAMIRA,"CONC_MATERIAL_HEMATITE|CONC_MOTIF_BISON",/Media_Vault/images/IMG_02.jpg,CC BY-NC 4.0,"Altamira Report 2023, Fig. 1B",b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5,1920,1080,Open
+IMG_03,image,,SITE_ALTAMIRA,CONC_MOTIF_CLAVIFORM,/Media_Vault/images/IMG_03.jpg,CC BY 4.0,Excavation Photo Log 1970,c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6,1024,768,Restricted
+IMG_04,image,,SITE_LASCAUX,"CONC_MATERIAL_MANGANESE|CONC_MOTIF_HORSE",/Media_Vault/images/IMG_04.jpg,CC BY-SA 4.0,"Lascaux 3D Scan 2024, Chamber A",d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1,4000,3000,Open
+IMG_05,figure,DOC_002,SITE_LASCAUX,CONC_PERIOD_MAGDALENIAN,/Media_Vault/images/IMG_05.jpg,CC BY-NC 4.0,Synthèse Art Pariétal 2022,e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2,800,600,Open
+IMG_06,scan,ART_010,SITE_ALTAMIRA,CONC_MATERIAL_IVORY,/Media_Vault/images/IMG_06.jpg,CC0 1.0,Artifact Scan Series A,f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3,2000,2000,Open
+IMG_07,image,,SITE_CHAUVET,"CONC_MOTIF_LION|CONC_MOTIF_RHINO",/Media_Vault/images/IMG_07.jpg,CC BY-NC 4.0,Chauvet Archive 2020,a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4,1500,1000,Restricted
+IMG_08,image,,SITE_CHAUVET,CONC_MOTIF_OWL,/Media_Vault/images/IMG_08.jpg,CC BY-NC 4.0,Chauvet Archive 2020,b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5,1500,1000,Restricted
+IMG_09,video,,SITE_COSQUER,"CONC_MOTIF_PENGUIN|CONC_PERIOD_SOLUTREAN",/Media_Vault/images/IMG_09.jpg,CC BY-SA 4.0,Cosquer Diving Log 1991,c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6,1280,720,Restricted
+IMG_10,image,DOC_003,SITE_CHAUVET,CONC_METHOD_RAMAN,/Media_Vault/images/IMG_10.jpg,CC BY 4.0,"Pigment Analysis 2022, Fig. 3",d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1,900,500,Open
+IMG_11,figure,DATASET_005,SITE_DENISOVA,CONC_MATERIAL_BONE,/Media_Vault/images/IMG_11.jpg,CC BY-NC 4.0,Denisova Genome Paper 2021,e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2,1200,800,Open
+IMG_12,image,,SITE_EL_CASTILLO,"CONC_MOTIF_HAND|CONC_MATERIAL_OCHRE",/Media_Vault/images/IMG_12.jpg,CC BY-NC 4.0,El Castillo Survey 2018,f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3,1800,900,Open
+IMG_13,image,DOC_004,SITE_EL_CASTILLO,CONC_MOTIF_DISK,/Media_Vault/images/IMG_13.jpg,CC BY-NC 4.0,El Castillo Survey 2018,a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4,1800,900,Open
+IMG_14,image,,SITE_BLOMBOS,"CONC_MOTIF_HATCHING|CONC_MATERIAL_OCHRE",/Media_Vault/images/IMG_14.jpg,CC BY 4.0,Blombos Excavation 2004,b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5,1600,1200,Open
+IMG_15,image,,SITE_BLOMBOS,CONC_MATERIAL_BONE,/Media_Vault/images/IMG_15.jpg,CC BY 4.0,Blombos Excavation 2004,c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6,1600,1200,Open
+IMG_16,scan,,SITE_ALTAMIRA,"CONC_MOTIF_CAPRID|CONC_PERIOD_SOLUTREAN",/Media_Vault/images/IMG_16.jpg,CC BY-NC 4.0,Altamira 3D Scan 2020,d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1,2500,2500,Embargo
+IMG_17,image,,SITE_ALTAMIRA,"CONC_MOTIF_CAPRID|CONC_PERIOD_SOLUTREAN",/Media_Vault/images/IMG_17.jpg,CC BY-NC 4.0,Altamira Archival Photo,e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2,1024,768,Embargo
+IMG_18,image,,SITE_LASCAUX,"CONC_MOTIF_BISON|CONC_PERIOD_MAGDALENIAN",/Media_Vault/images/IMG_18.jpg,CC BY-SA 4.0,Lascaux Public Archive,f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3,1920,1080,Open
+IMG_19,image,,SITE_LASCAUX,"CONC_MOTIF_BISON|CONC_PERIOD_MAGDALENIAN",/Media_Vault/images/IMG_19.jpg,CC BY-SA 4.0,Lascaux Public Archive,a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4,1920,1080,Open
+IMG_20,figure,DOC_005,SITE_COSQUER,CONC_PERIOD_GRAVETTIAN,/Media_Vault/images/IMG_20.jpg,CC BY-NC 4.0,Cosquer Review 2019,b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5,900,500,Restricted
+IMG_21,image,ART_020,SITE_ALTAMIRA,CONC_MATERIAL_STONE,/Media_Vault/images/IMG_21.jpg,CC BY-NC 4.0,Artifact Photo 2023,c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6,1000,800,Open
+IMG_22,image,,SITE_CHAUVET,"CONC_MOTIF_MEGACEROS|CONC_PERIOD_AURIGNACIAN",/Media_Vault/images/IMG_22.jpg,CC BY-NC 4.0,Chauvet Archival Photo,d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1,1400,900,Restricted
+IMG_23,image,,SITE_CHAUVET,"CONC_MOTIF_MEGACEROS|CONC_PERIOD_AURIGNACIAN",/Media_Vault/images/IMG_23.jpg,CC BY-NC 4.0,Chauvet Archival Photo,e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2,1400,900,Restricted
+IMG_24,video,,SITE_ALTAMIRA,CONC_METHOD_PHOTOGRAMMETRY,/Media_Vault/images/IMG_24.jpg,CC BY 4.0,Altamira Photogrammetry 2021,f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3,1920,1080,Restricted
+IMG_25,image,,SITE_EL_CASTILLO,"CONC_MOTIF_QUADRUPED|CONC_PERIOD_SOLUTREAN",/Media_Vault/images/IMG_25.jpg,CC BY-NC 4.0,El Castillo Public Archive,a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4,1600,900,Open
+IMG_26,image,,SITE_BLOMBOS,"CONC_MOTIF_GEOMETRIC|CONC_PERIOD_MSA",/Media_Vault/images/IMG_26.jpg,CC BY 4.0,Blombos Archive 2004,b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5,1100,800,Open
+IMG_27,figure,DATASET_010,,CONC_PERIOD_LGM,/Media_Vault/images/IMG_27.jpg,CC BY-SA 4.0,Paleo-Climate Model v3,c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6,1000,700,Open
+IMG_28,image,,SITE_ALTAMIRA,CONC_MOTIF_HORSE,/Media_Vault/images/IMG_28.jpg,CC BY-NC 4.0,Altamira Archival Photo,d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1,1920,1080,Open
+IMG_29,image,,SITE_CHAUVET,"CONC_MOTIF_A_SIGN|CONC_PERIOD_AURIGNACIAN",/Media_Vault/images/IMG_29.jpg,CC BY-NC 4.0,Chauvet Archival Photo,e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2,1400,900,Restricted
+IMG_30,figure,DOC_006,,CONC_METHOD_C14,/Media_Vault/images/IMG_30.jpg,CC BY 4.0,"Radiocarbon Dates Review 2023, Fig. 1",f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3,900,500,Open
+IMG_31,image,,SITE_LASCAUX,"CONC_MOTIF_GREAT_BLACK_COW|CONC_PERIOD_MAGDALENIAN",/Media_Vault/images/IMG_31.jpg,CC BY-SA 4.0,Lascaux Public Archive,a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4,2500,1500,Open
+IMG_32,image,,SITE_ALTAMIRA,"CONC_MOTIF_TEXTILE|CONC_PERIOD_MAGDALENIAN",/Media_Vault/images/IMG_32.jpg,CC BY-NC 4.0,Excavation Photo Log 1970,b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5,1024,768,Restricted
+IMG_33,image,,SITE_CHAUVET,CONC_MOTIF_FELID,/Media_Vault/images/IMG_33.jpg,CC BY-NC 4.0,Chauvet Archival Photo,c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6,1400,900,Restricted
+IMG_34,image,,SITE_EL_CASTILLO,"CONC_MOTIF_RED_DISK|CONC_PERIOD_SOLUTREAN",/Media_Vault/images/IMG_34.jpg,CC BY-NC 4.0,El Castillo Survey 2018,d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1,1800,900,Open
+IMG_35,image,,SITE_BLOMBOS,"CONC_MATERIAL_BONE|CONC_MOTIF_HATCHING",/Media_Vault/images/IMG_35.jpg,CC BY 4.0,Blombos Archive 2004,e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2,1600,1200,Open
+IMG_36,scan,,SITE_ALTAMIRA,CONC_METHOD_3D_SCAN,/Media_Vault/images/IMG_36.jpg,CC BY-NC 4.0,Altamira 3D Scan 2020,f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3,3000,3000,Embargo
+IMG_37,image,,SITE_COSQUER,"CONC_MOTIF_AUK|CONC_PERIOD_GRAVETTIAN",/Media_Vault/images/IMG_37.jpg,CC BY-SA 4.0,Cosquer Diving Log 1991,a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4,1280,720,Restricted
+IMG_38,figure,DATASET_015,,CONC_PERIOD_HOLOCENE,/Media_Vault/images/IMG_38.jpg,CC BY 4.0,Global Climate Shifts,b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5,800,600,Open
+IMG_39,image,,SITE_LASCAUX,"CONC_MOTIF_CHINESE_HORSE|CONC_PERIOD_MAGDALENIAN",/Media_Vault/images/IMG_39.jpg,CC BY-SA 4.0,Lascaux Public Archive,c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6,2000,1500,Open
+IMG_40,image,,SITE_ALTAMIRA,"CONC_MOTIF_BISON|CONC_PERIOD_MAGDALENIAN",/Media_Vault/images/IMG_40.jpg,CC BY-NC 4.0,Altamira Public Photo,d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1,1920,1080,Open
