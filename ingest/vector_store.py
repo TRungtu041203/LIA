@@ -3,6 +3,7 @@ from __future__ import annotations
 from typing import Dict, List, Iterable, Optional, Union, Sequence, Any, Tuple
 from qdrant_client import QdrantClient, models
 from dataclasses import dataclass
+from itertools import islice, repeat, zip_longest
 
 DistanceLike = Union[str, models.Distance]
 
@@ -67,36 +68,29 @@ class VectorStore:
           - force=False -> no-op
         """
         exists = self.client.collection_exists(collection_name)
-
+        
         if exists and not force:
-            return
+            return  # Collection exists, do nothing
 
         vectors_config = self._build_vectors_config(vectors, strict=strict)
 
+        # Combine all keyword arguments for the client call
+        common_args = {
+            "collection_name": collection_name,
+            "vectors_config": vectors_config,
+            "on_disk_payload": on_disk_payload,
+            "hnsw_config": hnsw_config,
+            "optimizers_config": optimizers_config,
+            "quantization_config": quantization_config,
+            "shard_number": shard_number,
+            "replication_factor": replication_factor,
+            "write_consistency_factor": write_consistency_factor,
+        }
+
         if exists and force:
-            self.client.update_collection(
-                collection_name=collection_name,
-                vectors_config=vectors_config,
-                on_disk_payload=on_disk_payload,
-                hnsw_config=hnsw_config,
-                optimizers_config=optimizers_config,
-                quantization_config=quantization_config,
-                shard_number=shard_number,
-                replication_factor=replication_factor,
-                write_consistency_factor=write_consistency_factor,
-            )
-        else:
-            self.client.create_collection(
-                collection_name=collection_name,
-                vectors_config=vectors_config,
-                on_disk_payload=on_disk_payload,
-                hnsw_config=hnsw_config,
-                optimizers_config=optimizers_config,
-                quantization_config=quantization_config,
-                shard_number=shard_number,
-                replication_factor=replication_factor,
-                write_consistency_factor=write_consistency_factor,
-            )
+            self.client.recreate_collection(**common_args)
+        elif not exists:
+            self.client.create_collection(**common_args)
 
     def _build_vectors_config(
         self,
@@ -156,32 +150,22 @@ class VectorStore:
         """
         Upsert in batches. For named-vectors collections, pass vector as dict
         e.g. {"image": [...], "caption": [...]}.
-        You may omit some named vectors per point (Qdrant allows sparse named vectors).
         """
-        from itertools import islice
-
-        def _batched(iterable, n):
-            it = iter(iterable)
-            while True:
-                batch = list(islice(it, n))
-                if not batch:
-                    break
-                yield batch
-
-        ids_iter = iter(ids)
-        vecs_iter = iter(vectors)
-        payl_iter = iter(payloads) if payloads is not None else None
+        payl_iter = iter(payloads) if payloads is not None else repeat(None)
+        
+        # 1. Zip iterables together first
+        all_data_iter = zip(ids, vectors, payl_iter)
 
         while True:
-            _ids = list(islice(ids_iter, batch_size))
-            if not _ids:
+            # 2. Batch the single zipped iterator
+            batch = list(islice(all_data_iter, batch_size))
+            if not batch:
                 break
-            _vecs = [v for v in islice(vecs_iter, len(_ids))]
-            _payl = [p for p in islice(payl_iter, len(_ids))] if payl_iter is not None else [None] * len(_ids)
 
+            # 3. Create points from the batch
             points = [
-                models.PointStruct(id=_ids[i], vector=_vecs[i], payload=_payl[i])
-                for i in range(len(_ids))
+                models.PointStruct(id=id, vector=vec, payload=payl)
+                for id, vec, payl in batch
             ]
             self.client.upsert(collection_name=collection_name, points=points)
 
@@ -189,8 +173,20 @@ class VectorStore:
         self,
         collection_name: str,
         point_ids: Iterable[Union[int, str]],
+        batch_size: int = 512,
     ) -> None:
-        self.client.delete(collection_name=collection_name, points=point_ids)
+        """Deletes points in batches to avoid OOM errors."""
+        ids_iter = iter(point_ids)
+        while True:
+            batch_ids = list(islice(ids_iter, batch_size))
+            if not batch_ids:
+                break
+            
+            self.client.delete(
+                collection_name=collection_name, 
+                points=batch_ids,
+                wait=False # Set to True if you need to guarantee deletion before next step
+            )
 
     def retrieve_points(
         self,
@@ -198,13 +194,24 @@ class VectorStore:
         point_ids: Iterable[Union[int, str]],
         with_payload: bool = True,
         with_vectors: bool = False,
+        batch_size: int = 512,
     ) -> List[models.Record]:
-        return self.client.retrieve(
-            collection_name=collection_name,
-            ids=list(point_ids),
-            with_payload=with_payload,
-            with_vectors=with_vectors,
-        )
+        """Retrieves points in batches to avoid OOM errors."""
+        all_records = []
+        ids_iter = iter(point_ids)
+        while True:
+            batch_ids = list(islice(ids_iter, batch_size))
+            if not batch_ids:
+                break
+            
+            records = self.client.retrieve(
+                collection_name=collection_name,
+                ids=batch_ids,
+                with_payload=with_payload,
+                with_vectors=with_vectors,
+            )
+            all_records.extend(records)
+        return all_records
 
     # ---------- SEARCH ----------
 
@@ -224,45 +231,28 @@ class VectorStore:
         """
         For named vectors, either pass:
           - vector_name="image", query_vector=[...], or
-          - query_vector=models.NamedVector(name="image", vector=[...])  (we build it for you below)
+          - query_vector={"image": [...]}
         """
-        # Allow either explicit name or a dict
+        # 1. Determine the query vector object first
+        q_vector: Union[List[float], Dict[str, List[float]], models.NamedVector]
         if vector_name and isinstance(query_vector, list):
-            nv = models.NamedVector(name=vector_name, vector=query_vector)
-            return self.client.search(
-                collection_name=collection_name,
-                query_vector=nv,
-                limit=limit,
-                filter=filter,
-                with_payload=with_payload,
-                with_vectors=with_vectors,
-                score_threshold=score_threshold,
-                offset=offset,
-            )
-        elif isinstance(query_vector, dict):
-            # When you pass a dict, Qdrant expects exactly one named vector inside
-            return self.client.search(
-                collection_name=collection_name,
-                query_vector=query_vector,
-                limit=limit,
-                filter=filter,
-                with_payload=with_payload,
-                with_vectors=with_vectors,
-                score_threshold=score_threshold,
-                offset=offset,
-            )
+            q_vector = models.NamedVector(name=vector_name, vector=query_vector)
+        elif isinstance(query_vector, (dict, list)):
+            q_vector = query_vector  # Handles dict and plain list for single-vector
         else:
-            # Single-vector collection
-            return self.client.search(
-                collection_name=collection_name,
-                query_vector=query_vector,  # plain list[float]
-                limit=limit,
-                filter=filter,
-                with_payload=with_payload,
-                with_vectors=with_vectors,
-                score_threshold=score_threshold,
-                offset=offset,
-            )
+            raise TypeError(f"Unsupported query_vector type: {type(query_vector)}")
+
+        # 2. Make a single, DRY call
+        return self.client.search(
+            collection_name=collection_name,
+            query_vector=q_vector,
+            limit=limit,
+            filter=filter,
+            with_payload=with_payload,
+            with_vectors=with_vectors,
+            score_threshold=score_threshold,
+            offset=offset,
+        )
 
     # ---------- UTILITIES ----------
 
@@ -272,9 +262,27 @@ class VectorStore:
     def exists(self, collection_name: str) -> bool:
         return self.client.collection_exists(collection_name)
 
-    def count(self, collection_name: str, exact: bool = False, filters: Optional[models.Filter] = None) -> int:
-        res = self.client.count(collection_name=collection_name, exact=exact, filter=filters)
-        return res.count
+    def count(self, collection_name: str, exact: bool = False, filters=None):
+        import inspect
+        kwargs = {}
+        # only add a filter-like arg if one was provided
+        if filters is not None:
+            sig = inspect.signature(self.client.count)
+            if "filter" in sig.parameters:
+                kwargs["filter"] = filters
+            elif "query_filter" in sig.parameters:
+                kwargs["query_filter"] = filters
+            else:
+                # client version doesn't support filters for count; raise a clear error
+                raise RuntimeError(
+                    "qdrant_client.count does not accept 'filter' or 'query_filter' in this client version"
+                )
+
+        res = self.client.count(collection_name=collection_name, exact=exact, **kwargs)
+        return res
+    # def count(self, collection_name: str, exact: bool = False, filters: Optional[models.Filter] = None) -> int:
+    #     res = self.client.count(collection_name=collection_name, exact=exact, filter=filters)
+    #     return res.count
 
     def assert_vector_dim(
         self,
