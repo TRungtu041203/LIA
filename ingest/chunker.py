@@ -1,16 +1,9 @@
+# chunker.py
 #!/usr/bin/env python3
 """
 Chunk markdown files from Rag_Vault/articles/DOC_paper_* directories.
-
-Supports three chunking methods:
-1. RecursiveCharacterSplitter
-2. MarkdownTextSplitter
-3. SemanticChunker
 """
-
 import argparse
-import csv
-import hashlib
 import json
 from pathlib import Path
 from typing import Dict, List, Optional, Any
@@ -21,56 +14,40 @@ from langchain_text_splitters import (
 from langchain_experimental.text_splitter import SemanticChunker
 from langchain_openai import OpenAIEmbeddings
 
+# Import from our new utility module
+import utils
 
 class DocumentChunker:
     """Chunk markdown files with metadata from registry CSV."""
     
-    REGISTRY_PATH = Path("/home/ubuntu/LIA_CARA/src/LIACARA/Rag_Vault/registry/document_master_list.csv")
-    ARTICLES_ROOT = Path("/home/ubuntu/LIA_CARA/src/LIACARA/Rag_Vault/articles")
-    # Registry path as it should appear in output (user-specified format)
-    # Note: This is the logical path format, not necessarily the filesystem path
+    _LIACARA_ROOT: Optional[Path] = None
     REGISTRY_PATH_OUTPUT = "/LIACARA/Rag_Vault/registry/document_master_list.csv"
     
+    @classmethod
+    def get_liacara_root(cls) -> Path:
+        """Get or find the LIACARA root directory."""
+        if cls._LIACARA_ROOT is None:
+            cls._LIACARA_ROOT = utils.find_liacara_root()
+        return cls._LIACARA_ROOT
+    
+    @classmethod
+    def get_registry_path(cls) -> Path:
+        """Get the registry CSV path relative to LIACARA root."""
+        return cls.get_liacara_root() / "Rag_Vault" / "registry" / "document_master_list.csv"
+    
+    @classmethod
+    def get_articles_root(cls) -> Path:
+        """Get the articles root path relative to LIACARA root."""
+        return cls.get_liacara_root() / "Rag_Vault" / "articles"
+    
     def __init__(self, method: str = "recursive", chunk_size: int = 1000, chunk_overlap: int = 200, embeddings=None):
-        """
-        Initialize chunker with specified method.
-        
-        Args:
-            method: One of 'recursive', 'markdown', or 'semantic'
-            chunk_size: Size of chunks (for recursive and markdown methods)
-            chunk_overlap: Overlap between chunks (for recursive and markdown methods)
-            embeddings: Optional embeddings model for semantic chunking (required if method='semantic')
-        """
         self.method = method.lower()
         self.chunk_size = chunk_size
         self.chunk_overlap = chunk_overlap
         self.embeddings = embeddings
-        self.registry_data = self._load_registry()
+        self.registry_data = utils.load_document_registry(self.get_registry_path())
         self.splitter = self._create_splitter()
         
-    def _load_registry(self) -> Dict[str, Dict[str, Any]]:
-        """Load document metadata from registry CSV."""
-        registry = {}
-        registry_path = DocumentChunker.REGISTRY_PATH
-        if not registry_path.exists():
-            raise FileNotFoundError(f"Registry not found: {registry_path}")
-        
-        with open(registry_path, 'r', encoding='utf-8') as f:
-            reader = csv.DictReader(f)
-            for row in reader:
-                doc_id = row['doc_id']
-                # Parse site_ids and concept_ids (pipe-separated)
-                site_ids = [s.strip() for s in row['site_ids'].split('|') if s.strip()] if row.get('site_ids') else []
-                concept_ids = [c.strip() for c in row['concept_ids'].split('|') if c.strip()] if row.get('concept_ids') else []
-                
-                registry[doc_id] = {
-                    'site_ids': site_ids,
-                    'concept_ids': concept_ids,
-                    'license': row.get('license', ''),
-                    'checksum_sha256': row.get('checksum_sha256', ''),
-                }
-        return registry
-    
     def _create_splitter(self):
         """Create the appropriate text splitter based on method."""
         if self.method == "recursive":
@@ -85,9 +62,7 @@ class DocumentChunker:
                 chunk_overlap=self.chunk_overlap
             )
         elif self.method == "semantic":
-            # SemanticChunker requires embeddings
             if self.embeddings is None:
-                # Try to use OpenAI embeddings as default
                 try:
                     self.embeddings = OpenAIEmbeddings()
                 except Exception as e:
@@ -97,22 +72,10 @@ class DocumentChunker:
                     )
             return SemanticChunker(
                 embeddings=self.embeddings,
-                buffer_size=1,  # Number of sentences to combine
+                buffer_size=1,
             )
         else:
             raise ValueError(f"Unknown method: {self.method}. Choose from: recursive, markdown, semantic")
-    
-    def _calculate_sha256(self, file_path: Path) -> str:
-        """Calculate SHA256 checksum of a file."""
-        sha256_hash = hashlib.sha256()
-        with open(file_path, "rb") as f:
-            for byte_block in iter(lambda: f.read(4096), b""):
-                sha256_hash.update(byte_block)
-        return sha256_hash.hexdigest()
-    
-    def _extract_doc_id_from_path(self, md_path: Path) -> str:
-        """Extract doc_id from markdown file path (e.g., DOC_paper_01.md -> DOC_paper_01)."""
-        return md_path.stem
     
     def _get_doc_metadata(self, doc_id: str) -> Dict[str, Any]:
         """Get metadata for a document from registry."""
@@ -127,34 +90,18 @@ class DocumentChunker:
         return self.registry_data[doc_id]
     
     def chunk_file(self, md_path: Path) -> List[Dict[str, Any]]:
-        """
-        Chunk a single markdown file and return list of chunk dictionaries.
-        
-        Args:
-            md_path: Path to markdown file
-            
-        Returns:
-            List of chunk dictionaries with all required fields
-        """
-        # Read markdown content
+        """Chunks a single markdown file and returns list of chunk dictionaries."""
         text = md_path.read_text(encoding='utf-8', errors='ignore')
-        
-        # Calculate checksum
-        checksum = self._calculate_sha256(md_path)
-        
-        # Extract doc_id
-        doc_id = self._extract_doc_id_from_path(md_path)
-        
-        # Get metadata from registry
+        checksum = utils.calculate_sha256(md_path)
+        doc_id = utils.extract_doc_id_from_path(md_path)
+        short_id = str(doc_id).replace("DOC_paper_", "")
         metadata = self._get_doc_metadata(doc_id)
         
         # Use registry checksum if available, otherwise use calculated one
-        if metadata.get('checksum_sha256'):
-            checksum = metadata['checksum_sha256']
+        file_checksum = metadata.get('checksum_sha256') or checksum
         
         # Split into chunks
         if self.method == "semantic":
-            # SemanticChunker works with Document objects
             from langchain_core.documents import Document
             doc = Document(page_content=text, metadata={"source": str(md_path)})
             chunks = self.splitter.split_documents([doc])
@@ -165,7 +112,7 @@ class DocumentChunker:
         # Create chunk records
         chunk_records = []
         for idx, chunk_text in enumerate(chunk_texts, start=1):
-            chunk_id = f"{doc_id}_chunk_{idx:04d}"
+            chunk_id = f"CHUNK_{short_id}_{idx:04d}"
             
             chunk_record = {
                 'doc_id': doc_id,
@@ -176,26 +123,17 @@ class DocumentChunker:
                 'license': metadata['license'],
                 'source_path': str(md_path.resolve()),
                 'registry_path': DocumentChunker.REGISTRY_PATH_OUTPUT,
-                'checksum_sha256': checksum,
+                'checksum_sha256': file_checksum,
             }
             chunk_records.append(chunk_record)
         
         return chunk_records
     
     def process_all_files(self, output_dir: Optional[Path] = None) -> Dict[str, int]:
-        """
-        Process all markdown files in ARTICLES_ROOT.
-        
-        Args:
-            output_dir: Optional output directory. If None, saves to same directory as source file.
-            
-        Returns:
-            Dictionary with processing statistics
-        """
+        """Process all markdown files in ARTICLES_ROOT."""
         stats = {'processed': 0, 'failed': 0, 'total_chunks': 0}
         
-        # Find all markdown files matching pattern DOC_paper_*/DOC_paper_*.md
-        articles_root = DocumentChunker.ARTICLES_ROOT
+        articles_root = DocumentChunker.get_articles_root()
         md_files = list(articles_root.glob("DOC_paper_*/DOC_paper_*.md"))
         
         if not md_files:
@@ -208,21 +146,16 @@ class DocumentChunker:
         for md_path in sorted(md_files):
             try:
                 print(f"\nProcessing: {md_path.name}")
-                
-                # Chunk the file
                 chunk_records = self.chunk_file(md_path)
                 
-                # Determine output path
                 if output_dir:
                     output_dir.mkdir(parents=True, exist_ok=True)
-                    doc_id = self._extract_doc_id_from_path(md_path)
+                    doc_id = utils.extract_doc_id_from_path(md_path)
                     output_path = output_dir / f"{doc_id}_chunks.jsonl"
                 else:
-                    # Save in same directory as source file
-                    doc_id = self._extract_doc_id_from_path(md_path)
+                    doc_id = utils.extract_doc_id_from_path(md_path)
                     output_path = md_path.parent / f"{doc_id}_chunks.jsonl"
                 
-                # Write JSONL file
                 with open(output_path, 'w', encoding='utf-8') as f:
                     for record in chunk_records:
                         f.write(json.dumps(record, ensure_ascii=False) + '\n')
@@ -240,7 +173,6 @@ class DocumentChunker:
                 traceback.print_exc()
         
         return stats
-
 
 def main():
     """CLI entry point."""
@@ -273,38 +205,30 @@ def main():
         help="Output directory for chunks (default: same directory as source file)"
     )
     parser.add_argument(
-        "--registry-path",
+        "--liacara-root",
         type=str,
         default=None,
-        help="Path to registry CSV (default: /home/ubuntu/LIA_CARA/src/LIACARA/Rag_Vault/registry/document_master_list.csv)"
-    )
-    parser.add_argument(
-        "--articles-root",
-        type=str,
-        default=None,
-        help="Path to articles root directory (default: /home/ubuntu/LIA_CARA/src/LIACARA/Rag_Vault/articles)"
+        help="Path to LIACARA root directory (default: auto-detected)"
     )
     
     args = parser.parse_args()
     
-    # Override defaults if provided
-    if args.registry_path:
-        DocumentChunker.REGISTRY_PATH = Path(args.registry_path)
-    if args.articles_root:
-        DocumentChunker.ARTICLES_ROOT = Path(args.articles_root)
+    if args.liacara_root:
+        DocumentChunker._LIACARA_ROOT = Path(args.liacara_root).resolve()
     
-    # Create chunker
+    print(f"LIACARA root: {DocumentChunker.get_liacara_root()}")
+    print(f"Registry path: {DocumentChunker.get_registry_path()}")
+    print(f"Articles root: {DocumentChunker.get_articles_root()}")
+    
     chunker = DocumentChunker(
         method=args.method,
         chunk_size=args.chunk_size,
         chunk_overlap=args.chunk_overlap
     )
     
-    # Process files
     output_dir = Path(args.output_dir) if args.output_dir else None
     stats = chunker.process_all_files(output_dir=output_dir)
     
-    # Print summary
     print("\n" + "="*60)
     print("Processing Summary")
     print("="*60)
@@ -312,7 +236,6 @@ def main():
     print(f"Files failed: {stats['failed']}")
     print(f"Total chunks created: {stats['total_chunks']}")
     print("="*60)
-
 
 if __name__ == "__main__":
     main()
